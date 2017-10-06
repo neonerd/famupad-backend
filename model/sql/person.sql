@@ -10,7 +10,13 @@ WHERE
   :*departmentId{AND department_id = *}
 
 -- name: fetch
-SELECT * FROM person WHERE id = :id
+SELECT
+  person.*,
+  department.acronym AS departmentAcronym,
+  department.name AS departmentName
+FROM person 
+  LEFT JOIN department ON person.department_id = department.id
+  WHERE person.id = :id OR person.slug = :id
 
 -- name: create
 INSERT INTO person (firstName, lastName, department_id, enrolledAt, isActiveStudent, email, phone, urlWeb, urlFacebook, slug, createdAt, updatedAt) VALUES :$person{firstName, lastName, department_id, enrolledAt, isActiveStudent, email, phone, urlWeb, urlFacebook, slug, createdAt, updatedAt}
