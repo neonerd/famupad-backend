@@ -54,8 +54,6 @@ module.exports = {
       const projectsWithLikesAndFiles = db.mapFromMultipleToOne(projectsWithLikes, projectFiles, 'files', 'project_id')
       const projectsWithLikesAndFilesAndPeople = db.mapFromMultipleToOne(projectsWithLikesAndFiles, projectPeople, 'people', 'project_id')
 
-      console.log(projectPeople)
-
       // Response
       ctx.body = {status: 'OK', data: projectsWithLikesAndFilesAndPeople}
     }

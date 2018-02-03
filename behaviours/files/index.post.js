@@ -9,8 +9,6 @@ module.exports = {
   middleware: [
     upload.single('file'),
     async function (ctx, next) {
-      console.log('files are', ctx.req.file)
-
       const hash = crypto.createHash('sha1')
       hash.update(ctx.req.file.originalname)
       hash.update(String(Math.random()))
@@ -23,7 +21,7 @@ module.exports = {
       const s3Uploader = ctx.s3.uploadFile({
         localFile: ctx.req.file.path,
         s3Params: {
-          Bucket: 'famupad', // TODO: Configurable env
+          Bucket: 'famupad',
           Key: `${fileData.fileHash}${path.extname(fileData.fileName)}`,
           ContentDisposition: `attachment; filename=${fileData.fileName}`
         }
