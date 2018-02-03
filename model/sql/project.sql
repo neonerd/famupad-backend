@@ -10,6 +10,7 @@ FROM project
   LEFT JOIN project_type ON project.project_type_id = project_type.id
   LEFT JOIN project_excercise ON project.project_excercise_id = project_excercise.id
   :*personId{INNER JOIN project_person ON project.id = project_person.project_id AND project_person.person_id = *}
+  :*isLiked{INNER JOIN project_like ON project.id = project_like.project_id AND project_like.user_id = *}
 WHERE
   1=1
   :*departmentId{AND department_id = *}

@@ -24,6 +24,10 @@ module.exports = {
         parameters['*orderBy'] = `${ctx.request.query.sort.replace('-', '')} ${order}`
       }
 
+      // Only liked
+      if (ctx.request.query.isLiked) {
+        parameters['*isLiked'] = ctx.user.id
+      }
 
       // Filter by smart query
 
