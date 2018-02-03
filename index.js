@@ -41,7 +41,6 @@ app.use(async function (ctx, next) {
 // SQLite3 DB
 app.use(async function (ctx, next) {
   ctx.sqlAdapter = puresql.adapters.sqlite(db, (sql) => {
-    console.log('SQLite Query: ', sql)
   })
   await next()
 })
