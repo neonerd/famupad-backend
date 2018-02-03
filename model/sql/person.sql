@@ -8,6 +8,7 @@ FROM person
 WHERE
   1=1
   :*departmentId{AND department_id = *}
+:*orderBy{ORDER BY *!}
 
 -- name: fetch
 SELECT
