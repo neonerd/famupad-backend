@@ -1,1 +1,0 @@
-This folder stores the SQLite data file.
