@@ -18,7 +18,7 @@ const s3 = require('s3')
 const AWS = require('aws-sdk')
 
 const bodyParser = require('koa-bodyparser')
-const cors = require('kcors')
+const cors = require('@koa/cors')
 
 // DB
 const db = new sqlite.Database(__dirname + '/data/db.sqlite')
