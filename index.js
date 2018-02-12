@@ -31,7 +31,11 @@ const config = {
 
 // File-based store (for sessions)
 const scatteredStore = require('scattered-store')
-const scatteredStoreInstance = scatteredStore(__dirname + '/data/sessions')
+const scatteredStoreInstance = scatteredStore.create(__dirname + '/data/sessions', err => {
+  if (err) {
+    throw new Error('Could not initialize Scattered Store!')
+  }
+})
 // File-based session store
 app.use(async function (ctx, next) {
   ctx.sessionStore = scatteredStoreInstance
