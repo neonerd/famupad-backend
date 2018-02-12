@@ -13,7 +13,7 @@ module.exports = async function (ctx, next) {
   if (user && user.password.toUpperCase() === hash.digest('hex').toUpperCase()) {
     const token = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
 
-    ctx.sessionStore.set('user_session_' + token, user)
+    await ctx.sessionStore.set('user_session_' + token, user)
 
     ctx.body = {
       status: 'OK',

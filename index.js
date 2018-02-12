@@ -30,11 +30,11 @@ const config = {
 }
 
 // File-based store (for sessions)
-const dirty = require('dirty')
-const dirtyDb = dirty(__dirname + '/data/sessions.db')
+const scatteredStore = require('scattered-store')
+const scatteredStoreInstance = scatteredStore(__dirname + '/data/sessions')
 // File-based session store
 app.use(async function (ctx, next) {
-  ctx.sessionStore = dirtyDb
+  ctx.sessionStore = scatteredStoreInstance
   await next()
 })
 
